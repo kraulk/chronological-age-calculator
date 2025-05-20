@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Chronological Age Calculator Bulma</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
+	</head>
+	<body>
+		<section class="section">
+			<div class="container">
+				<h1 class="title has-text-centered">Chronological Age Calculator</h1>
+
+				<form onsubmit="event.preventDefault(); calculateAge();" aria-label="Chronological Age Form">
+					<div class="field">
+						<label class="label" for="birthdate">Birthdate</label>
+						<div class="control">
+							<input class="input" type="date" id="birthdate" name="birthdate" required />
+						</div>
+					</div>
+
+					<div class="field">
+						<label class="label" for="reference-date">Reference Date</label>
+						<div class="control">
+							<input class="input" type="date" id="reference-date" name="reference-date" required />
+						</div>
+					</div>
+
+					<div class="buttons mt-4">
+						<button type="button" class="button is-info" onclick="setToday()">Use Today's Date</button>
+						<button type="submit" class="button is-primary">Calculate Age</button>
+					</div>
+				</form>
+
+				<div id="result" class="notification is-success mt-5 is-light" role="status" aria-live="polite"></div>
+			</div>
+		</section>
+
+		<script>
+			function setToday() {
+				const today = new Date().toISOString().split("T")[0];
+				document.getElementById("reference-date").value = today;
+			}
+
+			function calculateAge() {
+				const birth = new Date(document.getElementById("birthdate").value);
+				const ref = new Date(document.getElementById("reference-date").value);
+				const resultEl = document.getElementById("result");
+
+				if (isNaN(birth.getTime()) || isNaN(ref.getTime())) {
+					resultEl.textContent = "Please enter both dates.";
+					return;
+				}
+
+				if (ref < birth) {
+					resultEl.textContent = "Reference date must be after birthdate.";
+					return;
+				}
+
+				let years = ref.getFullYear() - birth.getFullYear();
+				let months = ref.getMonth() - birth.getMonth();
+				let days = ref.getDate() - birth.getDate();
+
+				if (days < 0) {
+					months--;
+					const prevMonth = new Date(ref.getFullYear(), ref.getMonth(), 0);
+					days += prevMonth.getDate();
+				}
+
+				if (months < 0) {
+					years--;
+					months += 12;
+				}
+
+				resultEl.textContent = `${years} year(s), ${months} month(s), and ${days} day(s)`;
+			}
+		</script>
+	</body>
+</html>
