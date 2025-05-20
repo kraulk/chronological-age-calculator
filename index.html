@@ -11,6 +11,11 @@
 			<div class="container">
 				<h1 class="title has-text-centered">Chronological Age Calculator</h1>
 
+				<div class="notification is-warning is-light mt-5 pr-6">
+					<button class="delete"></button>
+					This calculator is provided as a helpful tool. <strong>Users are responsible for verifying all results</strong> and ensuring their accuracy in professional practice.
+				</div>
+
 				<form onsubmit="event.preventDefault(); calculateAge();" aria-label="Chronological Age Form">
 					<div class="field">
 						<label class="label" for="birthdate">Birthdate</label>
@@ -74,6 +79,17 @@
 
 				resultEl.textContent = `${years} year(s), ${months} month(s), and ${days} day(s)`;
 			}
+		</script>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				(document.querySelectorAll(".notification .delete") || []).forEach(($delete) => {
+					const $notification = $delete.parentNode;
+
+					$delete.addEventListener("click", () => {
+						$notification.parentNode.removeChild($notification);
+					});
+				});
+			});
 		</script>
 	</body>
 </html>
