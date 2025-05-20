@@ -26,13 +26,15 @@
 
 					<div class="field">
 						<label class="label" for="reference-date">Reference Date</label>
+						<div class="buttons">
+							<button type="button" class="button is-info" onclick="setToday()">Use Today's Date</button>
+						</div>
 						<div class="control">
 							<input class="input" type="date" id="reference-date" name="reference-date" required />
 						</div>
 					</div>
 
-					<div class="buttons mt-4">
-						<button type="button" class="button is-info" onclick="setToday()">Use Today's Date</button>
+					<div class="buttons mt-6">
 						<button type="submit" class="button is-primary">Calculate Age</button>
 					</div>
 				</form>
