@@ -27,7 +27,7 @@
 				<h1 class="title has-text-centered">Chronological Age Calculator</h1>
 
 				<div class="notification is-warning is-light mt-5 pr-6">
-					<button class="delete"></button>
+					<button class="delete" aria-label="Dismiss"></button>
 					This calculator is provided as a helpful tool. <strong>Users are responsible for verifying all results</strong> and ensuring their accuracy in professional practice.
 				</div>
 
@@ -40,9 +40,9 @@
 					</div>
 
 					<div class="field">
-						<label class="label" for="reference-date">Reference Date</label>
+						<label class="label" for="reference-date">Reference date</label>
 						<div class="buttons">
-							<button type="button" class="button is-info" onclick="setToday()">Use Today's Date</button>
+							<button type="button" class="button is-info" onclick="setToday()">Use today's date</button>
 						</div>
 						<div class="control">
 							<input class="input" type="date" id="reference-date" name="reference-date" required />
@@ -50,11 +50,32 @@
 					</div>
 
 					<div class="buttons mt-6">
-						<button type="submit" class="button is-primary">Calculate Age</button>
+						<button type="submit" class="button is-primary">Calculate age</button>
 					</div>
 				</form>
 
 				<div id="result" class="notification is-success mt-5 is-light has-text-weight-bold" role="status" aria-live="polite">Result</div>
+			</div>
+		</section>
+		<section class="section">
+			<div class="container">
+				<h2 class="title is-4 has-text-left">Feedback</h2>
+				<p>To use the Chronological Age Calculator, follow these steps:</p>
+				<script async defer src="https://tally.so/widgets/embed.js"></script>
+				<button class="button is-link is-light mt-4" data-tally-open="n05a9y" data-tally-layout="modal" data-tally-hide-title="1" data-tally-auto-close="500">Send me feedback!</button>
+			</div>
+		</section>
+		<section class="section">
+			<div class="content">
+				<h2 class="title is-4">How to use the Chronological Age Calculator</h2>
+				<p>To use the Chronological Age Calculator, follow these steps:</p>
+				<ol>
+					<li>Enter the birthdate in the first field.</li>
+					<li>Click the "Use today's date" button to automatically fill in the current date, or manually enter a reference date.</li>
+					<li>Click the "Calculate Age" button to see the age in years, months, and days.</li>
+				</ol>
+				<h2 class="title is-4">What is chronological age?</h2>
+				<p>Chronological age is the exact amount of time that has passed since birth, measured in years, months, and days. It's commonly used in psychological and educational assessments to compare a person's performance to typical age-based expectations. This calculator helps quickly determine a person's age on a specific date (the date of testing).</p>
 			</div>
 		</section>
 
