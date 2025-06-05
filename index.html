@@ -6,6 +6,12 @@
 		<meta name="description" content="Calculate the exact age in years, months, and days with our easy-to-use Chronological Age Calculator. Get started for free!" />
 		<title>Chronological Age Calculator</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
+		<style>
+			.input[type="date"] {
+				width: 10.5em;
+				max-width: 100%;
+			}
+		</style>
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -45,9 +51,6 @@
 
 					<div class="field">
 						<label class="label" for="reference-date">Reference date</label>
-						<div class="buttons">
-							<button type="button" class="button is-info" onclick="setToday()">Use today's date</button>
-						</div>
 						<div class="control">
 							<input class="input" type="date" id="reference-date" name="reference-date" required />
 						</div>
@@ -88,6 +91,9 @@
 				const today = new Date().toISOString().split("T")[0];
 				document.getElementById("reference-date").value = today;
 			}
+
+			// Set default reference date on page load
+			document.addEventListener("DOMContentLoaded", setToday);
 
 			function calculateAge() {
 				const birth = new Date(document.getElementById("birthdate").value);
